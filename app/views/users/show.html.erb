@@ -1,4 +1,3 @@
-<%= render 'headerlog' %>
   <h1 class="text-center"><%= @user.first_name + " " + @user.last_name %></h1>
   <% if user_signed_in? %>
     <% if @user != current_user && !current_user.follows?(@user) %>

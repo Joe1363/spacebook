@@ -1,0 +1,4 @@
+<h1 class="text-center">Find People</h1>
+<% @users.each do |user| %>
+  <p class="text-center"><a href="/users/<%= user.id %>"><%= user.first_name + " " + user.last_name %><a></p>
+<% end %>

@@ -6,7 +6,20 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @followers = @user.followees(User)
+    @posts = @user.posts
     render 'show.html.erb'
+
+  end
+
+  def new_post
+    @user = current_user
+    @post = Post.new(:content => params[:post_content])
+    @post.save
+    @user.posts << @post
+    @user.save
+    @post = Post.where(:user_id => current_user.id)
+
+    redirect_to action: :show
   end
 
   def follow
@@ -20,4 +33,9 @@ class UsersController < ApplicationController
     current_user.unfollow!(@user)
     redirect_to action: :show
   end
+
+private
+  def user_params
+     params.require(:user).permit(:first_name, :last_name, :posts, posts_attributes: [:id, :content, :_destroy])
+ end
 end

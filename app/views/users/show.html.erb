@@ -1,4 +1,7 @@
+<div class="user-head">
+
   <h1 class="text-center"><%= @user.first_name + " " + @user.last_name %></h1>
+  <!--follow button business-->
   <% if user_signed_in? %>
     <% if @user != current_user && !current_user.follows?(@user) %>
       <div class="text-center"><a href="/users/<%= @user.id %>/follow" class="button">Follow</a></div>
@@ -14,3 +17,44 @@
       <p class="text-center"><%= f.first_name %> <%= f.last_name %></p>
     <% end %>
   <% end %>
+  <!--end follow-->
+
+</div><!--user-head end-->
+
+<!--start body-->
+<div class="user-body">
+  <div class="row">
+    <div class="small-4 columns">
+      <p>placeholder. pictures, followers, possibly other stuff will go here</p>
+    </div>
+
+    <!--start posts-->
+    <div class="posts small-8 columns">
+      <% if current_user == @user %>
+      <div class="make-post">
+        <div class="make-post-top">
+          <p><strong>Make a post</strong></p>
+        </div>
+
+        <div class="make-post-body">
+          <form role="form" class="form-group new-post" id="new-post" action="/users/<%= @user.id %>/new_post" enctype="multipart/form-data" accept-charset="UTF-8" method="post">
+          <textarea class="form-control" rows="2" name="post_content" id="post_content"></textarea>
+        </div>
+
+        <div class="make-post-submit">
+          <input class="button tiny" type="submit" name="commit" value="Post"/>
+        </div>
+      </form>
+
+      </div><!--end make-post-->
+      <% end %>
+
+    <div class="posts-display">
+      <% @user.posts.each do |post| %>
+        <p><%= post.content %></p><br>
+        <% end %>
+    </div>
+    </div><!--end posts-->
+
+  </div><!--end row-->
+</div><!--end user-body-->

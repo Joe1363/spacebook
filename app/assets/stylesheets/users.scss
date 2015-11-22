@@ -1,3 +1,17 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$background-color: #e9e9e2;
+
+body {
+  background-color: $background-color;
+}
+
+.make-post {
+  background-color: white;
+  padding: 0px 10px;
+}
+
+.single-post {
+  background-color: white;
+}

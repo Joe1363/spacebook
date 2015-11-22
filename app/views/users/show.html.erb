@@ -30,6 +30,7 @@
 
     <!--start posts-->
     <div class="posts small-8 columns">
+      <!--start make-posts-->
       <% if current_user == @user %>
       <div class="make-post">
         <div class="make-post-top">
@@ -48,12 +49,17 @@
 
       </div><!--end make-post-->
       <% end %>
-
-    <div class="posts-display">
-      <% @user.posts.each do |post| %>
-        <p><%= post.content %></p><br>
+      <br>
+      <!--start posts-display-->
+      <div class="posts-display">
+        <% @user.posts.each do |post| %>
+          <div class="single-post">
+            <p><%= post.content %></p>
+            <hr>
+            <p>Posted: <%= time_ago_in_words(post.created_at) %> ago</p>
+          </div>
         <% end %>
-    </div>
+      </div><!--post-display-->
     </div><!--end posts-->
 
   </div><!--end row-->

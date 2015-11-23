@@ -1,24 +1,60 @@
 <div class="user-head">
+  <div class="row">
+    <!--user-pic-->
+    <div class="user-pic small-4 columns">
+      <p>text</p>
+    </div>
 
-  <h1 class="text-center"><%= @user.first_name + " " + @user.last_name %></h1>
-  <!--follow button business-->
-  <% if user_signed_in? %>
-    <% if @user != current_user && !current_user.follows?(@user) %>
-      <div class="text-center"><a href="/users/<%= @user.id %>/follow" class="button">Follow</a></div>
-    <% elsif @user != current_user && current_user.follows?(@user) %>
-      <div class="text-center"><a href="/users/<%= @user.id %>/unfollow" class="button">Unfollow</a></div>
-    <% end %>
-  <% end%>
-  <br>
+    <div class="name-and-nav small-8 columns">
+      <div class="row">
+        <!--user-name-->
+        <h1><%= @user.first_name + " " + @user.last_name %></h1>
+        <!--follow button business-->
+        <% if user_signed_in? %>
+          <% if @user != current_user && !current_user.follows?(@user) %>
+            <div class="text-center"><a href="/users/<%= @user.id %>/follow" class="button">Follow</a></div>
+          <% elsif @user != current_user && current_user.follows?(@user) %>
+            <div class="text-center"><a href="/users/<%= @user.id %>/unfollow" class="button">Unfollow</a></div>
+          <% end %>
+        <% end%>
+      </div>
 
-  <% if @followers != [] %>
-    <h3 class="text-center"><%= @user.first_name %> is following:</h3>
-    <% @followers.each do |f| %>
-      <p class="text-center"><%= f.first_name %> <%= f.last_name %></p>
-    <% end %>
-  <% end %>
-  <!--end follow-->
+      <div class="row">
+        <!--sub nav bar-->
+        <nav class="sub-nav" data-topbar role="navigation">
+          <section class="top-bar-section">
+            <!-- Right Nav Section -->
+            <!-- <ul class="right">
+              <li class="active"><a href="#">Right Button Active</a></li>
+              <li class="has-dropdown">
+                <a href="#">Right Button Dropdown</a>
+                <ul class="dropdown">
+                  <li><a href="#">First link in dropdown</a></li>
+                  <li class="active"><a href="#">Active link in dropdown</a></li>
+                </ul>
+              </li>
+            </ul> -->
 
+            <!-- Left Nav Section -->
+            <ul class="left">
+              <li><a href="#">Followers</a></li>
+            </ul>
+          </section>
+        </nav>
+
+      </div>
+
+    </div>
+    <br>
+
+    <!-- <% if @followers != [] %>
+      <h3 class="text-center"><%= @user.first_name %> is following:</h3>
+      <% @followers.each do |f| %>
+        <p class="text-center"><%= f.first_name %> <%= f.last_name %></p>
+      <% end %>
+    <% end %> -->
+    <!--end follow-->
+  </div>
 </div><!--user-head end-->
 
 <!--start body-->

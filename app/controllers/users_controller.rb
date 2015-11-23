@@ -5,7 +5,6 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @followers = @user.followees(User)
     @posts = @user.posts.order("updated_at DESC")
     render 'show.html.erb'
 
@@ -36,6 +35,7 @@ class UsersController < ApplicationController
 
   def view_followers
     @user = User.find(params[:id])
+    @followers = @user.followees(User)
   end
 
 private

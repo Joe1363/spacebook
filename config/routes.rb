@@ -7,8 +7,7 @@ Rails.application.routes.draw do
   match('users/:id/new_post' , {:via => :post, :to => 'users#new_post'})
   match('users/:id/follow' , {:via => :get, :to => 'users#follow'})
   match('users/:id/unfollow' , {:via => :get, :to => 'users#unfollow'})
-
-
+  match('users/:id/view_followers' , {:via => :get, :to => 'users#view_followers'})
 
   match('users/:id' , {:via => :get, :to => 'users#show'})
 

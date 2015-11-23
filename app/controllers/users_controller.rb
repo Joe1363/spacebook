@@ -34,6 +34,10 @@ class UsersController < ApplicationController
     redirect_to action: :show
   end
 
+  def view_followers
+    @user = User.find(params[:id])
+  end
+
 private
   def user_params
      params.require(:user).permit(:first_name, :last_name, :posts, posts_attributes: [:id, :content, :_destroy])

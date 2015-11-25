@@ -14,8 +14,19 @@ body {
   margin: auto;
 }
 
+.user-pic {
+  height: 180px;
+  width: 250px;
+  overflow-y: hidden;
+  margin: auto;
+}
+
 .no-li-deco {
   list-style: none;
+}
+
+.no-hover:hover {
+  background-color: transparent;
 }
 
 .make-post {

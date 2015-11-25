@@ -1,13 +1,23 @@
 <div class="user-head">
   <div class="row">
     <!--user-pic-->
-    <div class="user-pic small-4 columns">
-      <p>text</p>
+    <div class="small-4 columns">
+      <div class="user-pic">
+        <a href="#" data-reveal-id="myModal" class="no-hover">
+        <% if !@user.image.blank? %>
+          <%= image_tag @user.image.url(:med) %>
+        <% else %>
+          <img src="/system/user_default.png" class=""/>
+        <% end %>
+        </a>
+        <%= render 'image_modal' %>
+      </div><!--end user-pic-->
     </div>
 
     <div class="name-and-nav small-8 columns">
       <div class="row">
         <!--user-name-->
+        <br>
         <h1><%= @user.first_name + " " + @user.last_name %></h1>
         <!--follow button business-->
         <% if user_signed_in? %>
@@ -18,10 +28,10 @@
           <% end %>
         <% end%>
       </div>
-
+      <br><br><br>
       <div class="row">
         <!--sub nav bar-->
-        <nav class="sub-nav" data-topbar role="navigation">
+        <nav class="top-bar" data-topbar role="navigation">
           <section class="top-bar-section">
             <!-- Right Nav Section -->
             <!-- <ul class="right">

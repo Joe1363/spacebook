@@ -5,7 +5,7 @@
       <div class="user_pic_area">
         <a href="#" data-reveal-id="myModal" class="no-hover">
         <% if !@user.image.blank? %>
-          <%= image_tag @user.image.url(:user_pic), class: "user_pic" %>
+          <%= image_tag @user.image.url(:large), class: "user_pic" %>
         <% else %>
           <img src="/system/user_default.png" class="user_pic"/>
         <% end %>
@@ -15,20 +15,25 @@
     </div>
 
     <div class="name-and-nav small-8 columns">
+      <br>
       <div class="row">
-        <!--user-name-->
-        <br>
-        <h1><%= @user.first_name + " " + @user.last_name %></h1>
+        <div class="small-6 columns">
+          <!--user-name-->
+          <h1><%= @user.first_name + " " + @user.last_name %></h1>
+        </div>
         <!--follow button business-->
-        <% if user_signed_in? %>
-          <% if @user != current_user && !current_user.follows?(@user) %>
-            <div class="text-center"><a href="/users/<%= @user.id %>/follow" class="button">Follow</a></div>
-          <% elsif @user != current_user && current_user.follows?(@user) %>
-            <div class="text-center"><a href="/users/<%= @user.id %>/unfollow" class="button">Unfollow</a></div>
+        <div class="small-6 columns">
+          <% if user_signed_in? %>
+            <% if @user != current_user && !current_user.follows?(@user) %>
+              <div class="text-center"><a href="/users/<%= @user.id %>/follow" class="button">Follow</a></div>
+            <% elsif @user != current_user && current_user.follows?(@user) %>
+              <div class="text-center"><a href="/users/<%= @user.id %>/unfollow" class="button">Unfollow</a></div>
+            <% end %>
           <% end %>
-        <% end%>
+        </div>
       </div>
       <br><br><br>
+
       <div class="row">
         <!--sub nav bar-->
         <nav class="top-bar" data-topbar role="navigation">
@@ -53,10 +58,11 @@
         </nav>
       </div><!--row sub-nav-->
 
-    </div><!--name-nav-->
+    </div><!--name-and-nav nav-->
 
   </div><!--row-->
 </div><!--user-head end-->
+<br>
 
 <!--start body-->
 <div class="user-body">

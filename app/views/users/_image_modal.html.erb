@@ -1,14 +1,33 @@
 <div id="myModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
-  <h2 id="modalTitle">Add/Change Your Profile Picture</h2>
-  <hr>
-  <form role="form" class="form-group add_profile_image" id="user_profile_image" action="/users/<%= @user.id %>/add_profile_image" enctype="multipart/form-data" accept-charset="UTF-8" method="post">
-    <div id="profile_image" class="muted form-group toHide">
-      <label class="muted" for="user_image">Upload an Image From Your PC:</label>
-      <input type="file" class="file" name="profile_image" id="profile_image" />
-    </div>
-    <div class="form-group actions">
-      <input class="button" type="submit" name="commit" value="Add"/>
-    </div>
-  </form>
+  <h2 id="modalTitle" class="text-center">Add/Change Your Profile Picture</h2>
   <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+  <hr>
+  <div class="row">
+    <div class="small-8 small-centered columns">
+      <div class="small-4 columns">
+        <div class="current-pic text-center">
+          <% if !@user.image.blank? %>
+            <%= image_tag @user.image.url(:user_pic), class: "user_pic" %>
+          <% else %>
+            <img src="/system/user_default.png" class="user_pic/>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="small-8 columns">
+        <div class="pic-form">
+          <form role="form" class="form-group add_profile_image" id="user_profile_image" action="/users/<%= @user.id %>/add_profile_image" enctype="multipart/form-data" accept-charset="UTF-8" method="post">
+            <div id="profile_image" class="muted form-group toHide">
+              <label class="muted" for="user_image">Upload an Image From Your PC:</label>
+              <input type="file" class="file" name="profile_image" id="profile_image" />
+            </div>
+            <div class="form-group actions">
+              <input class="button" type="submit" name="commit" value="Add"/>
+            </div>
+          </form>
+        </div><!--end pic-form-->
+      </div>
+    </div><!--end column-8-->
+
+  </div><!--end row-->
 </div>

@@ -39,6 +39,13 @@ class UsersController < ApplicationController
     @yourFollowers = @user.followers(User)
   end
 
+  def add_profile_image
+    @user = current_user
+    @user.image = params[:profile_image]
+    @user.save
+    redirect_to action: :show
+  end
+
 private
   def user_params
      params.require(:user).permit(:first_name, :last_name, :posts, :image, posts_attributes: [:id, :content, :_destroy])

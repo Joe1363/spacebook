@@ -2,12 +2,12 @@
   <div class="row">
     <!--user-pic-->
     <div class="small-4 columns">
-      <div class="user-pic">
+      <div class="user_pic_area">
         <a href="#" data-reveal-id="myModal" class="no-hover">
         <% if !@user.image.blank? %>
-          <%= image_tag @user.image.url(:med) %>
+          <%= image_tag @user.image.url(:user_pic), class: "user_pic" %>
         <% else %>
-          <img src="/system/user_default.png" class=""/>
+          <img src="/system/user_default.png" class="user_pic"/>
         <% end %>
         </a>
         <%= render 'image_modal' %>

@@ -6,7 +6,11 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @posts = @user.posts.order("updated_at DESC")
-    render 'show.html.erb'
+
+    respond_to do |format|
+      format.html { render 'show.html.erb', status: 200 }
+      format.json { render json: @user, status: 200 }
+    end
 
   end
 

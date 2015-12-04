@@ -6,10 +6,13 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @posts = @user.posts.order("updated_at DESC")
+    @changed = {:user => {:userid => @user.id, :first => @user.first_name, :last => @user.last_name}}
 
     respond_to do |format|
       format.html { render 'show.html.erb', status: 200 }
-      format.json { render json: @user, status: 200 }
+      format.json { render json: @changed, status: 200 }
+      # format.json { render :json => @user.to_json(
+      #   :only => [:id, :first_name, :last_name]), status: 200 }
     end
 
   end

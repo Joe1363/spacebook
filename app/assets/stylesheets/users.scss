@@ -64,6 +64,12 @@ body {
   background-color: transparent;
 }
 
+.pictures-area {
+  background-color: white;
+  border-radius: $border-radius;
+  padding: 0px 10px;
+}
+
 .make-post {
   background-color: white;
   padding: 0px 10px;
@@ -72,5 +78,6 @@ body {
 
 .single-post {
   background-color: white;
+  padding: 0px 10px;
   border-radius: $border-radius;
 }

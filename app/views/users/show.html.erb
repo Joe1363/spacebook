@@ -17,17 +17,15 @@
     <div class="name-and-nav small-8 columns">
       <br>
       <div class="row">
-        <div class="small-6 columns">
+        <div class="small-12 columns">
           <!--user-name-->
-          <h1><%= @user.first_name + " " + @user.last_name %></h1>
-        </div>
+          <h1 class="inline"><%= @user.first_name + " " + @user.last_name %></h1>
         <!--follow button business-->
-        <div class="small-6 columns">
           <% if user_signed_in? %>
             <% if @user != current_user && !current_user.follows?(@user) %>
-              <div class="text-center"><a href="/users/<%= @user.id %>/follow" class="button">Follow</a></div>
+              <div class="text-center inline"><a href="/users/<%= @user.id %>/follow" class="large button fl-btn">Follow</a></div>
             <% elsif @user != current_user && current_user.follows?(@user) %>
-              <div class="text-center"><a href="/users/<%= @user.id %>/unfollow" class="button">Unfollow</a></div>
+              <div class="text-center inline"><a href="/users/<%= @user.id %>/unfollow" class="large button fl-btn">Unfollow</a></div>
             <% end %>
           <% end %>
         </div>
@@ -57,22 +55,20 @@
           </section>
         </nav>
       </div><!--row sub-nav-->
-
     </div><!--name-and-nav nav-->
-
   </div><!--row-->
 </div><!--user-head end-->
 <br>
 
 <!--start body-->
-<div class="pictures user-body">
+<div class="user-body">
   <div class="row">
     <!--User pictures start-->
     <div class="small-4 columns">
       <div class="pictures-area">
 
         <div class="pictures-header">
-          <p>Pictures (0)</p> <!--TODO add variable for number of pictures-->
+          <p class="margin-auto">Pictures (0)</p> <!--TODO add variable for number of pictures-->
           <hr>
         </div>
 
@@ -80,7 +76,6 @@
         </div>
       </div>
     </div>
-
 
     <!--start posts-->
     <div class="posts small-8 columns">
@@ -102,8 +97,9 @@
       </form>
 
       </div><!--end make-post-->
-      <% end %>
       <br>
+      <% end %>
+
       <!--start posts-display-->
       <div class="posts-display">
         <% @posts.each do |post| %>

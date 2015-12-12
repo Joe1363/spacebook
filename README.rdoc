@@ -1,6 +1,6 @@
 An application that started out as a facebook clone but ended up being a twitter clone.
 
-For educational purposes.
+For educational purposes and to test out Foundation.
 
 The name comes from a college professor who mistakingly, but humorously lumped myspace and
 facebook into one entity, referring to them as 'spacebook'.
